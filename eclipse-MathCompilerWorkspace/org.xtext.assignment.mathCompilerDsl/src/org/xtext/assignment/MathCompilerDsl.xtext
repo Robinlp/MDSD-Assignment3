@@ -1,0 +1,43 @@
+grammar org.xtext.assignment.MathCompilerDsl with org.eclipse.xtext.common.Terminals
+
+generate mathCompilerDsl "http://www.xtext.org/assignment/MathCompilerDsl"
+
+MathLang:
+	mathList+=MathExp (mathList+=MathExp)*
+;
+
+MathExp:
+	'result'expName=STRING 'is' exp=Exp
+;
+
+// (2*3) => Mult(2,3)
+
+Exp returns Expression:
+	Factor (('+' {Plus.left=current} | '-' {Minus.left=current} ) right=Factor)*
+;
+
+Factor returns Expression:
+	Primary (('*' {Mult.left=current} | '/' {Div.left=current} ) right=Primary)*
+;
+
+Primary returns Expression:
+	Number | Parenthesis | VariableBinding | VariableUse
+;
+
+// let x = 4+3 in x*2 end (result: 14)
+
+VariableBinding:
+	{Let} 'let' name=ID '=' binding=Exp 'in' body=Exp 'end'
+;
+
+VariableUse:
+	{Var} ref=[Let]
+;
+
+Parenthesis returns Expression:
+	'(' Exp ')'
+;
+
+Number:
+	value=INT
+;

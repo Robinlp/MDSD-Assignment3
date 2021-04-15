@@ -1,0 +1,30 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: org.xtext.assignment.mathCompilerDsl
+Bundle-ManifestVersion: 2
+Bundle-Name: org.xtext.assignment.mathCompilerDsl
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: org.xtext.assignment.mathCompilerDsl; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.xtext,
+ org.eclipse.xtext.xbase,
+ org.eclipse.equinox.common;bundle-version="3.5.0",
+ org.eclipse.emf.ecore,
+ org.eclipse.xtext.xbase.lib;bundle-version="2.14.0",
+ org.eclipse.xtext.util,
+ org.eclipse.emf.common,
+ org.eclipse.xtend.lib;bundle-version="2.14.0",
+ org.antlr.runtime;bundle-version="[3.2.0,3.2.1)"
+Bundle-RequiredExecutionEnvironment: JavaSE-11
+Export-Package: org.xtext.assignment.services,
+ org.xtext.assignment.serializer,
+ org.xtext.assignment.mathCompilerDsl.impl,
+ org.xtext.assignment.validation,
+ org.xtext.assignment.mathCompilerDsl,
+ org.xtext.assignment.generator,
+ org.xtext.assignment.parser.antlr.internal,
+ org.xtext.assignment,
+ org.xtext.assignment.parser.antlr,
+ org.xtext.assignment.mathCompilerDsl.util,
+ org.xtext.assignment.scoping
+Import-Package: org.apache.log4j
